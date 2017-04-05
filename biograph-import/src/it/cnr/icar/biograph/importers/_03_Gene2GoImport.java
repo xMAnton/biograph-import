@@ -7,8 +7,11 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import com.orientechnologies.orient.core.intent.OIntentMassiveInsert;
+import com.orientechnologies.orient.core.metadata.schema.OType;
+import com.tinkerpop.blueprints.Parameter;
 import com.tinkerpop.blueprints.Vertex;
 import com.tinkerpop.blueprints.impls.orient.OrientEdge;
+import com.tinkerpop.blueprints.impls.orient.OrientEdgeType;
 import com.tinkerpop.blueprints.impls.orient.OrientGraphFactory;
 import com.tinkerpop.blueprints.impls.orient.OrientGraphNoTx;
 import com.tinkerpop.blueprints.impls.orient.OrientVertex;
@@ -46,7 +49,14 @@ public class _03_Gene2GoImport {
     	graph.declareIntent(new OIntentMassiveInsert());
     	graph.setStandardElementConstraints(false);
 
-    	graph.createEdgeType("annotates");
+    	OrientEdgeType vann = graph.createEdgeType("annotates");
+    	vann.createProperty("evidence", OType.STRING);
+    	vann.createProperty("qualifier", OType.STRING);
+    	vann.createProperty("category", OType.STRING);
+
+    	graph.createKeyIndex("evidence", Vertex.class, new Parameter<String, String>("type", "NOTUNIQUE"), new Parameter<String, String>("class", "annotates"));
+    	graph.createKeyIndex("qualifier", Vertex.class, new Parameter<String, String>("type", "NOTUNIQUE"), new Parameter<String, String>("class", "annotates"));
+    	graph.createKeyIndex("category", Vertex.class, new Parameter<String, String>("type", "NOTUNIQUE"), new Parameter<String, String>("class", "annotates"));
 
 	    BufferedReader reader = new BufferedReader(new FileReader(fileName));
 

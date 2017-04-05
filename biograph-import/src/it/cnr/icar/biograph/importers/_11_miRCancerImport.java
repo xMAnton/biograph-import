@@ -17,6 +17,7 @@ import com.tinkerpop.blueprints.impls.orient.OrientEdge;
 import com.tinkerpop.blueprints.impls.orient.OrientGraphFactory;
 import com.tinkerpop.blueprints.impls.orient.OrientGraphNoTx;
 import com.tinkerpop.blueprints.impls.orient.OrientVertexType;
+import com.tinkerpop.blueprints.impls.orient.OrientEdgeType;
 
 public class _11_miRCancerImport {
 
@@ -52,12 +53,11 @@ public class _11_miRCancerImport {
 
     	OrientVertexType vcan = graph.createVertexType("cancer");
     	vcan.createProperty("name", OType.STRING);
-    	vcan.createProperty("profile", OType.STRING);
-    	
     	graph.createKeyIndex("name", Vertex.class, new Parameter<String, String>("type", "NOTUNIQUE"), new Parameter<String, String>("class", "cancer"));
-    	graph.createKeyIndex("profile", Vertex.class, new Parameter<String, String>("type", "NOTUNIQUE"), new Parameter<String, String>("class", "cancer"));
     	
-    	graph.createEdgeType("cancer2mirna");
+    	OrientEdgeType ecan = graph.createEdgeType("cancer2mirna");
+    	ecan.createProperty("profile", OType.STRING);
+    	graph.createKeyIndex("profile", Vertex.class, new Parameter<String, String>("type", "NOTUNIQUE"), new Parameter<String, String>("class", "cancer2mirna"));
 
 	    BufferedReader reader = new BufferedReader(new FileReader(fileName));
 

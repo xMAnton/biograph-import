@@ -1,4 +1,4 @@
-	package it.cnr.icar.biograph.importers;
+package it.cnr.icar.biograph.importers;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -56,16 +56,20 @@ public class _04_MiRBaseImport {
     	OrientVertexType mirna = graph.createVertexType("miRNA");
     	mirna.createProperty("accession", OType.STRING);
     	mirna.createProperty("name", OType.STRING);
+    	mirna.createProperty("description", OType.STRING);
     	
     	graph.createKeyIndex("accession", Vertex.class, new Parameter<String, String>("type", "UNIQUE"), new Parameter<String, String>("class", "miRNA"));
     	graph.createKeyIndex("name", Vertex.class, new Parameter<String, String>("type", "UNIQUE"), new Parameter<String, String>("class", "miRNA"));
+    	graph.createKeyIndex("description", Vertex.class, new Parameter<String, String>("type", "NOTUNIQUE"), new Parameter<String, String>("class", "miRNA"));
 
     	OrientVertexType mirnaMature = graph.createVertexType("miRNAmature");
     	mirnaMature.createProperty("accession", OType.STRING);
     	mirnaMature.createProperty("product", OType.STRING);
+    	mirnaMature.createProperty("evidence", OType.STRING);
     	
     	graph.createKeyIndex("accession", Vertex.class, new Parameter<String, String>("type", "NOTUNIQUE"), new Parameter<String, String>("class", "miRNAmature"));
     	graph.createKeyIndex("product", Vertex.class, new Parameter<String, String>("type", "NOTUNIQUE"), new Parameter<String, String>("class", "miRNAmature"));
+    	graph.createKeyIndex("evidence", Vertex.class, new Parameter<String, String>("type", "NOTUNIQUE"), new Parameter<String, String>("class", "miRNAmature"));
 
     	graph.createEdgeType("precursorOf");
 

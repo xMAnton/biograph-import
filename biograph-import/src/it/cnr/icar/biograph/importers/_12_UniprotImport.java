@@ -58,8 +58,14 @@ public class _12_UniprotImport {
  
     	OrientVertexType vprot = graph.createVertexType("protein");
     	vprot.createProperty("name", OType.STRING);
+    	vprot.createProperty("fullName", OType.STRING);
+    	vprot.createProperty("sequenceLenght", OType.INTEGER);
+    	vprot.createProperty("sequenceMass", OType.INTEGER);
     	
     	graph.createKeyIndex("name", Vertex.class, new Parameter<String, String>("type", "UNIQUE"), new Parameter<String, String>("class", "protein"));
+    	graph.createKeyIndex("fullName", Vertex.class, new Parameter<String, String>("type", "NOTUNIQUE"), new Parameter<String, String>("class", "protein"));
+       	graph.createKeyIndex("sequenceLenght", Vertex.class, new Parameter<String, String>("type", "NOTUNIQUE"), new Parameter<String, String>("class", "protein"));
+       	graph.createKeyIndex("sequenceMass", Vertex.class, new Parameter<String, String>("type", "NOTUNIQUE"), new Parameter<String, String>("class", "protein"));
 
     	OrientVertexType vacc = graph.createVertexType("proteinAccession");
     	vacc.createProperty("name", OType.STRING);

@@ -58,10 +58,12 @@ public class _02_GOImport {
     	OrientVertexType go = graph.createVertexType("go");
     	go.createProperty("goId", OType.STRING);
     	go.createProperty("name", OType.STRING);
+    	go.createProperty("namespace", OType.STRING);
     	
     	//graph.createKeyIndex("name", Vertex.class, new Parameter<String, String>("type", "UNIQUE"), new Parameter<String, String>("class", "go_SubOntology"));
     	graph.createKeyIndex("goId", Vertex.class, new Parameter<String, String>("type", "UNIQUE"), new Parameter<String, String>("class", "go"));
     	graph.createKeyIndex("name", Vertex.class, new Parameter<String, String>("type", "NOTUNIQUE"), new Parameter<String, String>("class", "go"));
+    	graph.createKeyIndex("namespace", Vertex.class, new Parameter<String, String>("type", "NOTUNIQUE"), new Parameter<String, String>("class", "go"));
 
     	graph.createEdgeType("isA");
     	graph.createEdgeType("regulates");

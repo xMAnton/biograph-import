@@ -55,6 +55,11 @@ public class _16_miRNASNPImport {
 
     	graph.createKeyIndex("SNPid", Vertex.class, new Parameter<String, String>("type", "UNIQUE"), new Parameter<String, String>("class", "miRNASNP"));
     	graph.createKeyIndex("miRNA", Vertex.class, new Parameter<String, String>("type", "NOTUNIQUE"), new Parameter<String, String>("class", "miRNASNP"));
+    	graph.createKeyIndex("chr", Vertex.class, new Parameter<String, String>("type", "NOTUNIQUE"), new Parameter<String, String>("class", "miRNASNP"));
+    	graph.createKeyIndex("miRstart", Vertex.class, new Parameter<String, String>("type", "NOTUNIQUE"), new Parameter<String, String>("class", "miRNASNP"));
+    	graph.createKeyIndex("miRend", Vertex.class, new Parameter<String, String>("type", "NOTUNIQUE"), new Parameter<String, String>("class", "miRNASNP"));
+    	graph.createKeyIndex("lostNum", Vertex.class, new Parameter<String, String>("type", "NOTUNIQUE"), new Parameter<String, String>("class", "miRNASNP"));
+    	graph.createKeyIndex("gainNum", Vertex.class, new Parameter<String, String>("type", "NOTUNIQUE"), new Parameter<String, String>("class", "miRNASNP"));
 
     	graph.createEdgeType("hasSNP");
 

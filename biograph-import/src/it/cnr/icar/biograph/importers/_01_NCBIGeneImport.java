@@ -43,10 +43,16 @@ public class _01_NCBIGeneImport {
 
     	OrientVertexType gene = graph.createVertexType("gene");
     	gene.createProperty("geneId", OType.STRING);
+    	gene.createProperty("locusTag", OType.STRING);
+    	gene.createProperty("chromosome", OType.STRING);
+    	gene.createProperty("mapLocation", OType.STRING);
     	gene.createProperty("type", OType.STRING);
     	gene.createProperty("nomenclatureAuthoritySymbol", OType.STRING);
     	
     	graph.createKeyIndex("geneId", Vertex.class, new Parameter<String, String>("type", "UNIQUE"), new Parameter<String, String>("class", "gene"));
+    	graph.createKeyIndex("locusTag", Vertex.class, new Parameter<String, String>("type", "UNIQUE"), new Parameter<String, String>("class", "gene"));
+    	graph.createKeyIndex("chromosome", Vertex.class, new Parameter<String, String>("type", "UNIQUE"), new Parameter<String, String>("class", "gene"));
+    	graph.createKeyIndex("mapLocation", Vertex.class, new Parameter<String, String>("type", "UNIQUE"), new Parameter<String, String>("class", "gene"));
     	graph.createKeyIndex("type", Vertex.class, new Parameter<String, String>("type", "NOTUNIQUE"), new Parameter<String, String>("class", "gene"));
     	graph.createKeyIndex("nomenclatureAuthoritySymbol", Vertex.class, new Parameter<String, String>("type", "NOTUNIQUE"), new Parameter<String, String>("class", "gene"));
 

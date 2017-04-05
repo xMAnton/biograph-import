@@ -42,8 +42,10 @@ public class _09_ReactomeImport {
 
     	OrientVertexType vpath = graph.createVertexType("pathway");
     	vpath.createProperty("pathwayId", OType.STRING);
+    	vpath.createProperty("name", OType.STRING);
     	
     	graph.createKeyIndex("pathwayId", Vertex.class, new Parameter<String, String>("type", "UNIQUE"), new Parameter<String, String>("class", "pathway"));
+    	graph.createKeyIndex("name", Vertex.class, new Parameter<String, String>("type", "NOTUNIQUE"), new Parameter<String, String>("class", "pathway"));
     	
     	graph.createEdgeType("pathway2go");
     	graph.createEdgeType("miRNA2pathway");

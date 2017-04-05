@@ -55,6 +55,11 @@ public class _05_HumanMiRNAGenePrediction_S_C_Import {
     	vint.createProperty("energy", OType.DOUBLE);
     	vint.createProperty("database", OType.STRING);
     	
+    	vint.createProperty("snpEnergy", OType.DOUBLE);
+    	vint.createProperty("basePair", OType.STRING);
+    	vint.createProperty("geneAve", OType.DOUBLE);
+    	vint.createProperty("mirnaAve", OType.DOUBLE);
+
     	graph.createKeyIndex("database", Vertex.class, new Parameter<String, String>("type", "NOTUNIQUE"), new Parameter<String, String>("class", "interaction"));
     	graph.createKeyIndex("transcriptId", Vertex.class, new Parameter<String, String>("type", "NOTUNIQUE"), new Parameter<String, String>("class", "interaction"));
     	graph.createKeyIndex("mirStart", Vertex.class, new Parameter<String, String>("type", "NOTUNIQUE"), new Parameter<String, String>("class", "interaction"));
@@ -63,6 +68,11 @@ public class _05_HumanMiRNAGenePrediction_S_C_Import {
     	graph.createKeyIndex("geneEnd", Vertex.class, new Parameter<String, String>("type", "NOTUNIQUE"), new Parameter<String, String>("class", "interaction"));
     	graph.createKeyIndex("conservation", Vertex.class, new Parameter<String, String>("type", "NOTUNIQUE"), new Parameter<String, String>("class", "interaction"));
     	graph.createKeyIndex("energy", Vertex.class, new Parameter<String, String>("type", "NOTUNIQUE"), new Parameter<String, String>("class", "interaction"));
+
+    	graph.createKeyIndex("snpEnergy", Vertex.class, new Parameter<String, String>("type", "NOTUNIQUE"), new Parameter<String, String>("class", "interaction"));
+    	graph.createKeyIndex("basePair", Vertex.class, new Parameter<String, String>("type", "NOTUNIQUE"), new Parameter<String, String>("class", "interaction"));
+    	graph.createKeyIndex("geneAve", Vertex.class, new Parameter<String, String>("type", "NOTUNIQUE"), new Parameter<String, String>("class", "interaction"));
+    	graph.createKeyIndex("mirnaAve", Vertex.class, new Parameter<String, String>("type", "NOTUNIQUE"), new Parameter<String, String>("class", "interaction"));
 
     	graph.createEdgeType("interactingGene");
     	graph.createEdgeType("interactingMiRNA");
